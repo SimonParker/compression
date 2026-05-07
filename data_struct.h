@@ -9,59 +9,59 @@ binary tree (for storing huffman encoding)
 
 // TREE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 struct tree{
-  tree * left;
-  tree * right;
+  struct tree * left;
+  struct tree * right;
   char * chars;
   int count;
 };
 
 //constructor for the tree
-tree * make_tree(char * chars_, int count_, tree * left_, tree * right_);
+struct tree * make_tree(char * chars_, int count_, struct tree * left_, struct tree * right_);
 
 //destructor for the tree
-void destroy_tree(tree * tree_);
+void destroy_tree(struct tree * tree_);
 
 //takes 2 trees and creates a new tree that is the merging of the 2 trees
-tree * merge_tree(tree * t1, tree * t2);
+struct tree * merge_tree(struct tree * t1, struct tree * t2);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // NODE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 struct LL_node{
-  tree * data;
-  LL_node * next; 
+  struct tree * data;
+  struct LL_node * next; 
 };
 
 //node constructor
-LL_node * make_node(tree * data_);
+struct LL_node * make_node(struct tree * data_);
 
 //node destructor
-void destroy_node(LL_node * node);
+void destroy_node(struct LL_node * node);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 //LINKED LIST~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 struct LL{
-  LL_node * head; 
+  struct LL_node * head; 
 };
 
 //list constructor
-LL * make_list();
+struct LL * make_list();
 
 //list destructor
-void destroy_list(LL * list);
+void destroy_list(struct LL * list);
 
 //inserting
-void insert(LL * list, LL_node * node);
+void insert(struct LL * list, struct LL_node * node);
 
 //remove node that matches the key from the list
-void remove(LL * list, char * key);
+void remove_node(struct LL * list, char * key);
 
 
 //adds 1 to the count of the char if its in the list
 //if not in the list it adds it to the end of the list with count = 1
-void increment(LL * list, char character);
+void increment(struct LL * list, char character);
 
 //finds the 2 nodes with smallest total count, merges them into 1 node with their trees merged
 //fails when only 1 node in the list
-void merge_smallest_2(LL * list);
+void merge_smallest_2(struct LL * list);
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
